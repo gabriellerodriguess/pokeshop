@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+header {
+    font-family: 'RocknRoll One', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5em 2em;
+    background-color: rgba(255, 255, 255, 39%);
+}
+.title-menu {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%;
+}
+
+nav a {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s all;
+}
+
+nav a:hover {
+    color: #BB7FC2;
+}
+
+.cart-menu .icon-cart svg {
+    width: 1.8em;
+    height: 1.8em;
+    color: #6A5E56;
+}
+
+.cart-menu  .qtd-items{
+    position: absolute;
+    background-color: #fff;
+    width: 1.2em;
+    height: 1.4em;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 14px;
+    right: 20px;
+    top: 12px;
+    color: #6A5E56;
+}
