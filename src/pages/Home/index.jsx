@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import Pokemons from '../../components/Pokemons'
+import Footer from '../../components/Footer'
 import axios from 'axios'
 import './styles.css'
 
@@ -29,6 +30,7 @@ export default function Home() {
         <>
             <Header />
             <Pokemons pokemons={pokemons} color={() => Math.floor(Math.random() * 5)}/> 
+            <Footer />
        </>
     )
 }

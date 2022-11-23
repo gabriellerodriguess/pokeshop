@@ -1,0 +1,26 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.author {
+    display: flex;
+    font-size: 1.4em;
+    gap: 8px;
+    color: #6A5E56;
+}
+
+.links-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.links-contact a {
+    font-size: 1.4em;
+    text-decoration: none;
+    color: #6A5E56;
+}
