@@ -120,12 +120,12 @@
 
 @media (max-width: 768px) {
     .product-pokemon {
-        width: 160px;
+        width: 180px;
         margin: 20px 0px;
     }
 
     .info-price button {
-        padding: 8px 2px;
+        padding: 10px 8px;
         font-size: 1.4em;
     }
 }
