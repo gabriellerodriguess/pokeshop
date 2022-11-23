@@ -9,6 +9,7 @@ export default function Home() {
     const [pokemons, setPokemons] = useState([])
 
     useEffect(() => {
+        console.log(pokemons, `pokjjens`)
         getInfoPokemon()
     }, [])
 
@@ -19,16 +20,15 @@ export default function Home() {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
         const result = axios.all(endpoints.map(endpoint => axios.get(endpoint))).then(response => setPokemons(response))
-       
+        console.log(pokemons)
+
         return result
     }
 
     return (
         <>
             <Header />
-            {pokemons && pokemons.map((item,index) => (
-                <Pokemons name={item.data.name} abilities={item.data.abilities[0].ability.name} price={() => Math.floor(Math.random() * 10000)} urlImage={item.data.sprites.front_default} key={index} />
-            ))}
+            <Pokemons pokemons={pokemons} color={() => Math.floor(Math.random() * 5)}/> 
        </>
     )
 }

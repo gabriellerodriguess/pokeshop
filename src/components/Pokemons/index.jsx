@@ -1,20 +1,27 @@
+import { useEffect } from 'react'
 import {FaCoins, FaShoppingCart} from 'react-icons/fa'
 import './styles.css'
 
 export default function Pokemons(props) {
+
     return (
-        <div className='product-pokemon'>
-            <div className='image-pokemon'>
-                <img src={props.urlImage} alt={props.name}></img>
-            </div>
-            <div className='info-pokemon'>
-                <h2>{props.name}</h2>
-                <p>{props.abilities}</p>
-            </div>
-            <div className='info-price'>
-                <button className='price-pokemon'> <FaCoins /> {props.price()}</button>
-                <button className='addToCart'> <FaShoppingCart /> Buy</button>
-            </div>
-        </div>
+        <section className='card-pokemon'>
+            {props.pokemons && 
+                props.pokemons.map((pokemon, index) => (
+                    <div className={`product-pokemon color_${props.color()}`}  key={index}>
+                        <div className={`image-pokemon`}>
+                            <img className={pokemon.data.height <= 10 ? 'small' : 'big' || pokemon.data.height >= 20 ? 'big' : 'medium'} src={pokemon.data.sprites.front_default} alt={pokemon.data.name}></img>
+                        </div>
+                        <div className='info-pokemon'>
+                            <h2>{pokemon.data.name}</h2>
+                            <p>{pokemon.data.abilities[0].ability.name}</p>
+                        </div>
+                        <div className='info-price'>
+                            <button className='price-pokemon'> <FaCoins /> {Math.floor(Math.random() * 10000)}</button>
+                            <button className='addToCart'> <FaShoppingCart /> Buy</button>
+                        </div>
+                    </div>
+            ))}
+        </section>
     )
 }
