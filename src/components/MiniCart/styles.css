@@ -1,0 +1,69 @@
+.box-minicart {
+    position: fixed;
+    top: 11%;
+    right: 0;
+    background: #fff;
+    width: 40%;
+    height: 90%;
+    overflow: auto;
+    padding: 20px 0 40px 0;
+}
+
+.pokemon-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #CDC4BF;
+    padding: 0 15px;
+}
+
+.text-cart h1,p {
+    color: #6A5E56;
+    font-size: 1.4em;
+}
+
+.text-cart h1::first-letter,p::first-letter {
+    text-transform: uppercase;
+}
+
+.price-cart svg {
+    color: #FDD548;
+}
+.icon-remove svg {
+    width: 20px;
+    height: 20px;
+    color: #6A5E56;
+}
+
+.icon-remove:hover svg{
+    color: #CF0E0E;
+    cursor: pointer;
+}
+
+.icon-close {
+    position: absolute;
+    right: 0;
+}
+
+.icon-close svg {
+    color: #6A5E56;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.price-total {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: #6A5E56;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px;
+}
+
+@media (max-width: 768px) {
+    .box-minicart {
+        width: auto;
+    }
+}

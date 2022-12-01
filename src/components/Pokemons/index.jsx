@@ -3,7 +3,7 @@ import {FaCoins, FaShoppingCart} from 'react-icons/fa'
 import './styles.css'
 
 export default function Pokemons(props) {
-
+    
     return (
         <section className='card-pokemon'>
             {props.pokemons && 
@@ -17,8 +17,8 @@ export default function Pokemons(props) {
                             <p>{pokemon.data.abilities[0].ability.name}</p>
                         </div>
                         <div className='info-price'>
-                            <button className='price-pokemon'> <FaCoins /> {Math.floor(Math.random() * 10000)}</button>
-                            <button className='addToCart'> <FaShoppingCart /> Buy</button>
+                            <button className='price-pokemon'> <FaCoins /> {pokemon.data.base_experience}</button>
+                            <button className='addToCart' onClick={() => props.dispatch(pokemon)}> <FaShoppingCart /> Buy</button>
                         </div>
                     </div>
             ))}

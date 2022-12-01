@@ -97,6 +97,7 @@
     font-weight: bold;
     border-radius: 10px;
     font-family: 'VT323', monospace;
+    cursor: pointer;
 }
 
 .price-pokemon {

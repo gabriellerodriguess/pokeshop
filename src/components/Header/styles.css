@@ -3,7 +3,12 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: .5em 2em;
-    background-color: rgba(255, 255, 255, 39%);
+    background: #FFBECE;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000000;
+    box-shadow: 0 5px 12px #f995ae;
 }
 
 .title-menu {
@@ -61,6 +66,10 @@ nav a {
     font-size: 1.8em;
 } 
 
+.cart-menu {
+    cursor: pointer;
+}
+
 .cart-menu .icon-cart svg {
     width: 1.8em;
     height: 1.8em;
@@ -68,10 +77,11 @@ nav a {
 }
 
 .cart-menu  .qtd-items{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     background-color: #fff;
     width: 1.2em;
-    height: 1.4em;
+    height: 1.2em;
     text-align: center;
     border-radius: 50%;
     font-size: 14px;

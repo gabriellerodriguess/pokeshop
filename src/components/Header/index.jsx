@@ -3,7 +3,7 @@ import {FaShoppingCart} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import './styles.css'
 
-export default function Header() { 
+export default function Header(props) { 
     const [isMobile, setIsMobile] = useState(false)
     const [menuVisible, setMenuVisible] = useState(false)
 
@@ -43,9 +43,9 @@ export default function Header() {
                     <a href="#">Shop</a>
                 </nav>
             }
-            <div className='cart-menu'>
+            <div className='cart-menu' onClick={() => props.dispatch()}>
                 <span className='icon-cart'> <FaShoppingCart /> </span>
-                <span className="qtd-items"> 0 </span>
+                <span className="qtd-items"> {props.itemsCart.length} </span>
             </div>
         </header>
     )
