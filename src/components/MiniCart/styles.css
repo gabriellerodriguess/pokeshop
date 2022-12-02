@@ -64,6 +64,7 @@
 
 @media (max-width: 768px) {
     .box-minicart {
+        min-width: 200px;
         width: auto;
     }
 }
