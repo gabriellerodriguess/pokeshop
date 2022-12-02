@@ -11,7 +11,7 @@ export function MiniCart(props) {
         </div>
         {props.pokemon &&
             props.pokemon.map((pokemonCart,index) => (
-                <div className='pokemon-cart' key={index} id={index}>
+                <div className='pokemon-cart' key={index}>
                     <div className='img-cart'>
                         <img src={pokemonCart.img} alt={pokemonCart.name}></img>
                     </div>
@@ -20,9 +20,9 @@ export function MiniCart(props) {
                         <p>{pokemonCart.ability}</p>
                     </div>
                     <div className='price-cart'>
-                        <p> <FaCoins />  {pokemonCart.price}</p>
+                        <p> <FaCoins /> {pokemonCart.price}</p>
                     </div>
-                    <div className='icon-remove'>
+                    <div className='icon-remove' onClick={() => props.dispatch(pokemonCart)}>
                         <IoMdRemove />
                     </div>
                 </div>   
