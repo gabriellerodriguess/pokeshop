@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import Pokemons from '../../components/Pokemons'
+import Pokemons from '../../components/PokemonsCard'
 import Footer from '../../components/Footer'
+import LoadingPokemons from '../../components/LoadingPokemons'
+import { MiniCart } from '../../components/MiniCart'
 import axios from 'axios'
 import './styles.css'
-import { MiniCart } from '../../components/MiniCart'
 
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
     const [pokemon, setPokemon] = useState([])
     const [handleCart, setHandleCart] = useState(false)
     const [totalPrice, setTotalPrice] = useState(null)
+    const [loadingCard, setLoadingCard] = useState(true)
 
     useEffect(() => {
         getInfoPokemon()
@@ -19,15 +21,17 @@ export default function Home() {
 
     useEffect(() => {
         handleTotalPrice()
-        console.log(pokemon, 'array pokeo')
     }, [pokemon])
 
     function getInfoPokemon() { 
         let endpoints = []
-        for(let i = 1; i <= 100; i++) {
+        for(let i = 1; i <= 80; i++) {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
-        const result = axios.all(endpoints.map(endpoint => axios.get(endpoint))).then(response => setPokemons(response))
+        const result = axios.all(endpoints.map(endpoint => axios.get(endpoint))).then(response => {
+            setPokemons(response)
+            setLoadingCard(false)
+        })
         return result
     }
 
@@ -51,7 +55,6 @@ export default function Home() {
 
     function removePokemonInCart(item) {
         const updateArrPokemon = pokemon.filter(pokemonClicked => pokemonClicked.id !== item.id)
-        console.log('lista atualizada', updateArrPokemon)
         setPokemon(updateArrPokemon)
     }
 
@@ -67,6 +70,9 @@ export default function Home() {
     return (
         <>
             <Header itemsCart={pokemon} dispatch={() => setHandleCart(!handleCart)}/>
+            {loadingCard &&
+                <LoadingPokemons /> 
+            }
             <Pokemons dispatch={(pokemon) => addPokemonInCart(pokemon)} pokemons={pokemons} color={() => Math.floor(Math.random() * 5)}/> 
             {handleCart && 
                 <MiniCart total={totalPrice && totalPrice} pokemon={pokemon} handleCloseCart={() => handleCloseCart()} dispatch={(item) => removePokemonInCart(item)}/>

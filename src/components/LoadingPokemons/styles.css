@@ -1,0 +1,27 @@
+
+.loading-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-card {
+    width: 200px;
+    margin: 20px;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height: 258px;
+    background-color: rgba(255,255,255,39%);
+}
+
+@media (max-width: 768px) {
+    .loading-card {
+        width: 175px;
+        margin: 20px 5px;
+    }
+}
