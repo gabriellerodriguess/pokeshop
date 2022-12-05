@@ -1,7 +1,6 @@
 {
   "name": "pokeshop",
   "version": "0.1.0",
-  "private": true,
   "home-page": "https://gabriellerodriguess.github.io/pokeshop/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
