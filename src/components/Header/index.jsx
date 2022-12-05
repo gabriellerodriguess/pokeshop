@@ -4,18 +4,14 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import './styles.css'
 
 export default function Header(props) { 
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMobile, setIsMobile] = useState(true)
     const [menuVisible, setMenuVisible] = useState(false)
 
     useEffect(() => {
-        menuMobile()
-    }, [])
-    
-    function menuMobile() {
-        if(window.innerWidth <= 768) {
-            setIsMobile(!isMobile)
+        if(window.innerWidth >= 768) {
+            setIsMobile(false)
         }
-    }
+    }, [])
     
     function handleClick() {
         setMenuVisible(!menuVisible)
@@ -24,29 +20,41 @@ export default function Header(props) {
     return (
         <header>
             {isMobile && 
-                <div className='menu-mobile' onClick={() => handleClick()}> 
-                    <GiHamburgerMenu />
-                    <nav className={`nav-mobile ${menuVisible ? 'enabled' : 'disabled'}`}>
-                        <a href="#">Pokemons</a>
-                        <a href="#">Items</a>
-                        <a href="#">Shop</a>
-                    </nav>
-                </div>
+                <>
+                    <div className='menu-mobile' onClick={() => handleClick()}> 
+                        <GiHamburgerMenu />
+                        <nav className={`nav-mobile ${menuVisible ? 'enabled' : 'disabled'}`}>
+                            <a href="#">Pokemons</a>
+                            <a href="#">Items</a>
+                            <a href="#">Shop</a>
+                        </nav>
+                    </div>
+                    <div className='title-menu'>
+                        <h1>Pokeshop</h1>
+                    </div>
+                    <div className='cart-menu' onClick={() => props.dispatch()}>
+                        <span className='icon-cart'> <FaShoppingCart /> </span>
+                        <span className="qtd-items"> {props.itemsCart.length} </span>
+                    </div>
+                </>
             }
-            <div className='title-menu'>
-                <h1>Pokeshop</h1>
-            </div>
+
             {!isMobile &&
+            <>
+                <div className='title-menu'>
+                    <h1>Pokeshop</h1>
+                </div>
                 <nav className='menu-desk'>
                     <a href="#">Pokemons</a>
                     <a href="#">Items</a>
                     <a href="#">Shop</a>
                 </nav>
+                <div className='cart-menu' onClick={() => props.dispatch()}>
+                    <span className='icon-cart'> <FaShoppingCart /> </span>
+                    <span className="qtd-items"> {props.itemsCart.length} </span>
+                </div>
+            </>
             }
-            <div className='cart-menu' onClick={() => props.dispatch()}>
-                <span className='icon-cart'> <FaShoppingCart /> </span>
-                <span className="qtd-items"> {props.itemsCart.length} </span>
-            </div>
         </header>
     )
 }

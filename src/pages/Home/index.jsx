@@ -17,6 +17,7 @@ export default function Home() {
 
     useEffect(() => {
         getInfoPokemon()
+
     }, [])
 
     useEffect(() => {
@@ -37,7 +38,6 @@ export default function Home() {
 
     function addPokemonInCart(item) {
         setHandleCart(true)        
-
         const object = {
             img: item.data.sprites.front_default,
             name: item.data.name,
@@ -45,7 +45,6 @@ export default function Home() {
             price: item.data.base_experience,
             id: item.data.id,
         }
-
         const pokemonIsDuplicated = pokemon.some(pokemonDuplicated => pokemonDuplicated.id === item.data.id)
 
         if(item && !pokemonIsDuplicated) {
@@ -53,7 +52,7 @@ export default function Home() {
         }
     }
 
-    function removePokemonInCart(item) {
+    function updatePokemonCart(item) {
         const updateArrPokemon = pokemon.filter(pokemonClicked => pokemonClicked.id !== item.id)
         setPokemon(updateArrPokemon)
     }
@@ -67,15 +66,23 @@ export default function Home() {
         setTotalPrice(sumPrice)
     }
     
+    function saveLocalStorage() {
+        const updateArrPokemonJSON = JSON.stringify(pokemon)
+        const getLocalStorageItems = JSON.parse(localStorage.getItem('pokemons do carrinho'))
+        localStorage.setItem('pokemons do carrinho',updateArrPokemonJSON)
+
+        setPokemon(getLocalStorageItems)
+    }
+    
     return (
         <>
             <Header itemsCart={pokemon} dispatch={() => setHandleCart(!handleCart)}/>
             {loadingCard &&
                 <LoadingPokemons /> 
             }
-            <Pokemons dispatch={(pokemon) => addPokemonInCart(pokemon)} pokemons={pokemons} color={() => Math.floor(Math.random() * 5)}/> 
+            <Pokemons dispatch={(pokemon) =>  addPokemonInCart(pokemon)} pokemons={pokemons} color={() => Math.floor(Math.random() * 5)}/> 
             {handleCart && 
-                <MiniCart total={totalPrice && totalPrice} pokemon={pokemon} handleCloseCart={() => handleCloseCart()} dispatch={(item) => removePokemonInCart(item)}/>
+                <MiniCart total={totalPrice && totalPrice} pokemon={pokemon} handleCloseCart={() => handleCloseCart()} dispatch={(item) => updatePokemonCart(item)}/>
             }
             <Footer />
        </>

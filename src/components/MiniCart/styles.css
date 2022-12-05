@@ -66,5 +66,6 @@
     .box-minicart {
         min-width: 200px;
         width: auto;
+        top: 8%;
     }
 }
